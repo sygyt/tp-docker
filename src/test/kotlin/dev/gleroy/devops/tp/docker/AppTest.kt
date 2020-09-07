@@ -15,15 +15,6 @@ class AppTest {
     val mapper = ObjectMapper().findAndRegisterModules()
 
     @Test
-    fun down() = withTestApplication(Application::module) {
-        with(handleRequest(HttpMethod.Get, "/")) {
-            response.status() shouldBe HttpStatusCode.OK
-            response.content.shouldNotBeNull()
-            mapper.readValue<StatusDto>(response.content!!) shouldBe StatusDto("down")
-        }
-    }
-
-    @Test
     fun up() = withTestApplication(Application::module) {
         with(handleRequest(HttpMethod.Get, "/")) {
             response.status() shouldBe HttpStatusCode.OK
