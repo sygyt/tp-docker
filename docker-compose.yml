@@ -1,0 +1,21 @@
+version: '3.6'
+services: 
+    application:
+        image: my-kotlin-app
+        environment:
+            - url=postgres:5432/tp_devops
+            - username=tp_devops
+            - password=tp_devops
+        ports:
+            - "8080:8080"
+        links:
+            - postgres
+    postgres:
+        image: postgres
+        environment: 
+            - POSTGRES_USER=tp_devops
+            - POSTGRES_PASSWORD=tp_devops
+            - POSTGRES_DB=tp_devops  
+        ports: 
+            - "5432:5432"
+   
